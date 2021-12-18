@@ -10,6 +10,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -17,10 +18,13 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton butt1, butt2, mainButton;
-    int count, time;
-    int maxX, maxY;
+    int count;
+    float time;
+    float maxX, maxY;
     int buttonHeight, buttonWight;
     Timer objectTimer;
+    int SCORE;
+    TextView scoreScreen;
 
     void rand(){
 
@@ -40,11 +44,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
+        SCORE = 0;
+        scoreScreen = (TextView) findViewById(R.id.score);
+        scoreScreen.setX(730);
+        scoreScreen.setY(20);
+        scoreScreen.setText(Integer.toString(SCORE));
+
         butt1 = findViewById(R.id.butt1);
+        butt1.setX(maxX/2);
+        butt1.setY(maxY/2);
         butt2 = findViewById(R.id.butt2);
-        mainButton = (ImageButton)findViewById(R.id.mainButton);
+        mainButton = findViewById(R.id.mainButton);
         buttonHeight = butt1.getHeight();
         buttonWight = butt1.getWidth();
 
@@ -56,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 if (time == 2){
                     rand();
                     time = 0;
+                    //SCORE--;
+                    //scoreScreen.setText(Integer.toString(SCORE));
                 }
             }
         }, 0, 300);
@@ -67,12 +82,25 @@ public class MainActivity extends AppCompatActivity {
                 rand();
                 count++;
                 time = 0;
+                SCORE ++;
+                scoreScreen.setText(Integer.toString(SCORE));
+            }
+        });
+        butt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SCORE -= 2;
+                scoreScreen.setText(Integer.toString(SCORE));
+                Toast.makeText(MainActivity.this, "LOSER", Toast.LENGTH_SHORT).show();
             }
         });
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "LOSER", Toast.LENGTH_SHORT).show();
+                SCORE -= 2;
+                scoreScreen.setText(Integer.toString(SCORE));
+
             }
         });
     }
