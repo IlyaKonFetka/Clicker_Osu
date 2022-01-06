@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#2C2929"
+        android:src="@drawable/ph_dark2"
         />
 
     <TextView
@@ -43,5 +44,6 @@
         tools:ignore="MissingConstraints"
         android:background="@drawable/roundbuttonpurple"
         />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
