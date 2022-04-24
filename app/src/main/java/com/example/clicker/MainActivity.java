@@ -31,9 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
     void rand(){
 
-        //спизженный код
+        /////////////////////////////////////////
         Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
+        Point size;
+        size = new Point();
         display.getSize(size);
         maxX = size.x;
         maxY = size.y;
@@ -58,10 +59,13 @@ public class MainActivity extends AppCompatActivity {
         scoreScreen.setX(730);
         scoreScreen.setY(20);
         scoreScreen.setText(Integer.toString(SCORE));
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
 
         butt1 = findViewById(R.id.butt1);
-        butt1.setX(maxX/2);
-        butt1.setY(maxY/2);
+        butt1.setX(size.x >> 1);
+        butt1.setY(size.y >> 1);
         butt2 = findViewById(R.id.butt2);
         mainButton = findViewById(R.id.mainButton);
 
@@ -115,5 +119,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-//117
-//19.12.21-12:22
+//122
+//24.01.22

@@ -16,5 +16,13 @@
         android:layout_marginTop="@android:dimen/thumbnail_height"
         android:background="@drawable/huy"
         />
+    <TextView
+        android:layout_width="310dp"
+        android:layout_height="430dp"
+        android:layout_gravity="center"
+        android:text="Белая кнопка укажет то, где окажется жёлтая в момент, когда ты нажмёшь на неё. Попробуй поспеть за ней, чтобы показать наивысший результат!!"
+        android:textSize="35dp"
+        android:textColor="#930A0A"
+        />
 
 </LinearLayout>
